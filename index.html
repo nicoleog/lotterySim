@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Lucky for Life</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="Header"> 
+            <div class="HeaderTitle"> Lucky for Life </div>
+        </div>
+        <div class="mainBody"> 
+            <script language="Javascript">
+                var pickArr = [];
+                for (i = 0; i < 5; i++) {
+                    pick = Math.random() * 48 + 1;
+                    pick = Math.floor(pick);
+                
+                    while (pickArr.includes(pick) == true){    
+                            pick = Math.random() * 48 + 1;
+                            pick = Math.floor(pick);
+                    }
+                    pickArr.push(pick);
+                    
+                }
+                
+                document.write("Your pick before sorting: " + pickArr[0]);
+                for (i = 1; i < 5; i++) {
+                    document.write(", " + pickArr[i]);
+                }
+                document.write("<br>");
+            
+                
+                pickArr = pickArr.sort(function(a, b){return a - b});
+                
+                document.write("Your pick after sorting: " + pickArr[0]);
+                for (i = 1; i < 5; i++) {
+                    document.write(", " + pickArr[i]);
+                }
+                document.write("<br>");
+                document.write("<br>");
+                
+                
+                luckyBall = Math.random() * 18 + 1;
+                luckyBall = Math.floor(luckyBall);
+                document.write("Your lucky Ball Pick: " + luckyBall + "<br>");
+                document.write("<br>");
+                
+                
+                winningComb = [12, 15, 24, 35, 48];
+                document.write("Winning numbers: " + winningComb[0]);
+                for (i = 1; i < 5; i++) {
+                    document.write(", " + winningComb[i]);
+                }
+                document.write("<br>");
+                document.write("Winning lucky ball number: 3" + "<br>");
+                document.write("<br>");
+                
+                numMatches = 0;
+                for (i = 0; i < 5; i++) {
+                    if (pickArr.includes(winningComb[i])){
+                        numMatches++;
+                    }
+                }
+                document.write("How many of your pick matched the winning numbers: " + numMatches + "<br>");
+                
+                
+                isLuckyBall = false;
+                document.write("Did the lucky ball match: ");
+                if (luckyBall == 3) {
+                    document.write("yes! <br>");
+                    isLuckyBall = true;
+                } else {
+                    document.write("no<br>");
+                }
+                document.write("<br>");
+                
+                
+                prize = "You won: $0";
+                if (numMatches == 5) {
+                    if (isLuckyBall) {
+                        prize = "You won: $7,000 a week for life";
+                    } else {
+                        prize = "You won: $25,000 a year for life";
+                    }
+                }
+                if (numMatches == 4) {
+                    if (isLuckyBall) {
+                        prize = "You won: $5,000";
+                    } else {
+                        prize = "You won: $200";
+                    }
+                }
+                if (numMatches == 3) {
+                    if (isLuckyBall) {
+                        prize = "You won: $150";
+                    } else {
+                        prize = "You won: $20";
+                    }
+                }
+                if (numMatches == 2) {
+                    if (isLuckyBall) {
+                        prize = "You won: $25";
+                    } else {
+                        prize = "You won: $3";
+                    }
+                }
+                if (numMatches == 1) {
+                    if (isLuckyBall) {
+                        prize = "You won: $6";
+                    } 
+                }
+                if (numMatches == 0) {
+                    if (isLuckyBall) {
+                        prize = "You won: $4";
+                    } 
+                }
+
+                document.write(prize + "<br>");
+                
+
+            </script>
+        </div>
+    </body>
+</html>
